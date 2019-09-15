@@ -1,0 +1,19 @@
+{
+  "name": "livrariavirtual",
+  "version": "1.0.0",
+  "description": "livrariavirtual",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitluisfernando/livrariavirtual.git"
+  },
+  "author": "Luis/Alexandre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gitluisfernando/livrariavirtual/issues"
+  },
+  "homepage": "https://github.com/gitluisfernando/livrariavirtual#readme"
+}
