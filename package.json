@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/gitluisfernando/livrariavirtual/issues"
   },
-  "homepage": "https://github.com/gitluisfernando/livrariavirtual#readme"
+  "homepage": "https://github.com/gitluisfernando/livrariavirtual#readme",
+  "dependencies": {
+    "mongodb": "^3.3.2"
+  }
 }

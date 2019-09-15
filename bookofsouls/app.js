@@ -4,10 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var expressHbs = require('express-handlebars');
+var mongoose = require('mongoose');
 
 var routes = require('./routes/index');
 
 var app = express();
+
+mongoose.connect('mongodb://127.0.0.1:27017/shopping', { useNewUrlParser: true }, { useUnifiedTopology: true });
 
 // view engine setup
 app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
