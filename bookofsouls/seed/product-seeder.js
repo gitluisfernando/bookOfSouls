@@ -2,7 +2,10 @@ var Product = require('../models/product');
 
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1:27017/shopping', { useNewUrlParser: true }, { useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/shopping', { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }).catch(e => {
+    const msg = 'ERROR! Could not connect with MongoDB!'
+    console.log('\x1b[41m%s\x1b[37m', msg, '\x1b[0m')
+});
 
 var products = [
     new Product({
@@ -39,7 +42,7 @@ var products = [
 
 var done = 0;
 for (var i = 0; i < products.length; i++) {
-    products[i].save(function (err, result) {
+    products[i].save(function(err, result) {
         done++;
         if (done === products.length) {
             exit();
