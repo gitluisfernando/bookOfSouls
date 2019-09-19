@@ -17,21 +17,60 @@ passport.use('local.signup', new LocalStrategy({
     passwordField: 'password',
     passReqToCallback: true
 }, function (req, email, password, done) {
+    req.checkBody('email', 'E-mail inválido').notEmpty().isEmail();
+    req.checkBody('password', 'Senha inválida').notEmpty().isLength({ min: 4 });
+    var errors = req.validationErrors();
+    if (errors) {
+        var messages = [];
+        errors.forEach(function (error) {
+            messages.push(error.msg);
+        });
+        return done(null, false, req.flash('error', messages));
+    }
     User.findOne({ 'email': email }, function (err, user) {
         if (err) {
             return done(err);
         }
         if (user) {
-            return done(null, false, { message: 'E-mail já está em uso' })
+            return done(null, false, { message: 'E-mail já está em uso' });
         }
         var newUser = new User();
         newUser.email = email;
         newUser.password = newUser.encryptPassword(password);
-        newUser.save(function(err, result){
-            if (err){
+        newUser.save(function (err, result) {
+            if (err) {
                 return done(err);
             }
             return done(null, newUser);
         });
+    });
+}));
+
+passport.use('local.signin', new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
+}, function (req, email, password, done) {
+    req.checkBody('email', 'E-mail inválido').notEmpty().isEmail();
+    req.checkBody('password', 'Senha inválida').notEmpty();
+    var errors = req.validationErrors();
+    if (errors) {
+        var messages = [];
+        errors.forEach(function (error) {
+            messages.push(error.msg);
+        });
+        return done(null, false, req.flash('error', messages));
+    }
+    User.findOne({ 'email': email }, function (err, user) {
+        if (err) {
+            return done(err);
+        }
+        if (!user) {
+            return done(null, false, { message: 'Usuário não encontrado' });
+        }
+        if (!user.validPassword(password)) {
+            return done(null, false, { message: 'Senha incorreta' });
+        }
+        return done(null, user);
     });
 }));
