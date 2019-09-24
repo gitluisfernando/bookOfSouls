@@ -1,7 +1,15 @@
+/*
+* Utiliza o Passport.js para criar a estratégia de Cadastro e Login criptografado
+* de usuário
+*/
 var passport = require('passport');
 var User = require('../models/user');
 var LocalStrategy = require('passport-local').Strategy;
 
+/*
+* O serializeUser e o deserializeUser são responsáveis por manter a sessão do usuário
+* enquanto ele estiver logado na página
+*/
 passport.serializeUser(function (user, done) {
     done(null, user.id);
 });
@@ -12,6 +20,9 @@ passport.deserializeUser(function (id, done) {
     });
 });
 
+/*
+* Estratégia de autenticação de usuário e senha do Passport para o cadastro do usuário
+*/
 passport.use('local.signup', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
@@ -46,6 +57,9 @@ passport.use('local.signup', new LocalStrategy({
     });
 }));
 
+/*
+* Estratégia de autenticação de usuário e senha do Passport para o login do usuário
+*/
 passport.use('local.signin', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',

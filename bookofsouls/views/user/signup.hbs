@@ -1,6 +1,7 @@
+<!-- Tela de Cadastro de Usuários -->
 <div class="row">
     <div class="col-md-4 col-md-offset-4">
-        <h1>Sign Up</h1>
+        <h1>Cadastrar Usuário</h1>
         {{#if hasErrors}}
         <div class="alert alert-danger">
             {{# each messages}}
@@ -18,7 +19,7 @@
                 <input type="password" id="password" name="password" class="form-control">
             </div>
             <input type="hidden" name="_csrf" value="{{ csrfToken }}">
-            <button type="submit" class="btn btn-primary"> Sign Up </button>
+            <button type="submit" class="btn btn-primary"> Cadastrar </button>
         </form>
     </div>
 </div>

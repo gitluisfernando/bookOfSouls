@@ -1,3 +1,6 @@
+/*
+* Schema para salvar uma Ordem de Venda no MongoDB através do Mongoose
+*/
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 

@@ -29,7 +29,7 @@ var products = [
     new Product({
         imagePath: 'https://images-na.ssl-images-amazon.com/images/I/51g494b%2BoJL._SX346_BO1,204,203,200_.jpg',
         title: 'Frankenstein',
-        description: 'Frankenstein ou o Prometeu Moderno, mais conhecido simplesmente por Frankenstein, é um romance de terror gótico com inspirações do movimento romântico, de autoria de Mary Shelley, escritora britânica nascida em Londres',
+        description: 'Frankenstein ou o Prometeu Moderno, mais conhecido simplesmente por Frankenstein, é um romance de terror gótico com inspirações do movimento romântico, de autoria de Mary Shelley',
         price: 49
     }),
     new Product({

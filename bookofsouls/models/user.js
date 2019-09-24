@@ -1,3 +1,6 @@
+/*
+* Schema para salvar um Usuário no MongoDB através do Mongoose
+*/
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt-nodejs');
@@ -7,6 +10,9 @@ var userSchema = new Schema({
     password: { type: String, required: true }
 });
 
+/*
+* Utiliza o bcrypt para encriptar e validar a senha do usuário
+*/
 userSchema.methods.encryptPassword = function(password){
     return bcrypt.hashSync(password, bcrypt.genSaltSync(5), null);
 };

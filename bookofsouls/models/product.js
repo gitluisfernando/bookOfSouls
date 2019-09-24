@@ -1,3 +1,6 @@
+/*
+* Schema para salvar um Produto no MongoDB através do Mongoose
+*/
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 

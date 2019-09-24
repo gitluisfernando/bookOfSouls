@@ -1,3 +1,7 @@
+/*
+* Utiliza o Stripe para validar pagamento através do cartão de crédito
+*/
+
 Stripe.setPublishableKey('pk_test_4WA3QZEXqruNN7aQUthQMDZu00fGra1N1s');
 
 var $form = $('#checkout-form');

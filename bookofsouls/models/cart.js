@@ -1,8 +1,12 @@
+/*
+* Permite adicionar e remover itens ao carrinho de compras
+*/
 module.exports = function Cart(oldCart) {
     this.items = oldCart.items || {};
     this.totalQty = oldCart.totalQty || 0;
     this.totalPrice = oldCart.totalPrice || 0;
 
+    //Função para adicionar items ao carrinho de compras
     this.add = function(item, id) {
         var storedItem = this.items[id];
         if (!storedItem) {
@@ -14,6 +18,7 @@ module.exports = function Cart(oldCart) {
         this.totalPrice += storedItem.item.price;
     };
 
+    //Função para remover uma unidade de um item do carrinho
     this.reduceByOne = function(id) {
         this.items[id].qty--;
         this.items[id].price -= this.items[id].item.price;
@@ -25,6 +30,7 @@ module.exports = function Cart(oldCart) {
         }
     };
 
+    //Função para remover todas as unidades de um item do carrinho
     this.removeItem = function(id) {
         this.totalQty -= this.items[id].qty;
         this.totalPrice -= this.items[id].price;
