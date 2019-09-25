@@ -7,10 +7,10 @@ module.exports = function Cart(oldCart) {
     this.totalPrice = oldCart.totalPrice || 0;
 
     //Função para adicionar items ao carrinho de compras
-    this.add = function(item, id) {
+    this.add = function (item, id) {
         var storedItem = this.items[id];
         if (!storedItem) {
-            storedItem = this.items[id] = {item: item, qty: 0, price: 0};
+            storedItem = this.items[id] = { item: item, qty: 0, price: 0 };
         }
         storedItem.qty++;
         storedItem.price = storedItem.item.price * storedItem.qty;
@@ -19,7 +19,7 @@ module.exports = function Cart(oldCart) {
     };
 
     //Função para remover uma unidade de um item do carrinho
-    this.reduceByOne = function(id) {
+    this.reduceByOne = function (id) {
         this.items[id].qty--;
         this.items[id].price -= this.items[id].item.price;
         this.totalQty--;
@@ -31,13 +31,13 @@ module.exports = function Cart(oldCart) {
     };
 
     //Função para remover todas as unidades de um item do carrinho
-    this.removeItem = function(id) {
+    this.removeItem = function (id) {
         this.totalQty -= this.items[id].qty;
         this.totalPrice -= this.items[id].price;
         delete this.items[id];
     };
-    
-    this.generateArray = function() {
+
+    this.generateArray = function () {
         var arr = [];
         for (var id in this.items) {
             arr.push(this.items[id]);
